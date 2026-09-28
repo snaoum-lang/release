@@ -850,7 +850,7 @@ tests:
     - chain: openshift-e2e-test-hypershift-qe-mgmt
     workflow: cucushift-installer-rehearse-aws-ipi-ovn-hypershift
 - as: aws-ipi-ovn-hypershift-capacity-reservation-gpu-guest-f999
-  cron: 8 8 29 2 *
+  cron: 0 0 31 2 *
   reporter_config:
     channel: '#forum-prow-hypershift-qe-ci'
     job_states_to_report:
@@ -1287,7 +1287,7 @@ tests:
     - chain: openshift-e2e-test-clusterinfra-qe-longrun
     workflow: cucushift-installer-rehearse-aws-ipi-private-shared-vpc-phz-sts
 - as: aws-ipi-proxy-fips-f999-fips-check
-  cron: 8 8 29 2 *
+  cron: 0 0 31 2 *
   steps:
     cluster_profile: aws-qe
     env:
@@ -1863,7 +1863,7 @@ tests:
     - chain: openshift-e2e-test-hypershift-qe
     workflow: rosa-aws-sts-hcp-private-proxy
 - as: aws-rosa-hcp-upgrade-f999
-  cron: 8 8 29 2 *
+  cron: 0 0 31 2 *
   reporter_config:
     channel: '#managed-hypershift-ci-watcher'
     job_states_to_report:
@@ -2944,7 +2944,7 @@ tests:
     env:
       CATALOG_SOURCE_NAME: compliance-operator
       FILTERS_ADDITIONAL: ""
-      LVM_OPERATOR_SUB_CHANNEL: stable-4.21
+      LVM_OPERATOR_SUB_CHANNEL: stable-5.0
       LVM_OPERATOR_SUB_SOURCE: lvm-catalogsource
       TEST_FILTERS: ~HyperShiftMGMT&;~DEPRECATED&;~Disruptive&
       TEST_PARALLEL: "3"
@@ -2966,7 +2966,7 @@ tests:
       CATALOG_SOURCE_NAME: compliance-operator
       E2E_RUN_TAGS: '@complianceoperator'
       FILTERS_ADDITIONAL: ""
-      LVM_OPERATOR_SUB_CHANNEL: stable-4.21
+      LVM_OPERATOR_SUB_CHANNEL: stable-5.0
       LVM_OPERATOR_SUB_SOURCE: lvm-catalogsource
       TEST_FILTERS: ~HyperShiftMGMT&;~StressTest&;~DEPRECATED&;Disruptive&
       TEST_PARALLEL: "3"
@@ -2982,7 +2982,7 @@ tests:
 - as: metal-ds-ipi-ovn-lvms-f999-file-integrity
   capabilities:
   - intranet
-  cron: 8 8 29 2 *
+  cron: 0 0 31 2 *
   steps:
     cluster_profile: equinix-ocp-metal-qe
     env:
@@ -3589,19 +3589,6 @@ tests:
     test:
     - ref: openshift-extended-test
     workflow: cucushift-installer-rehearse-azure-ipi-ovn-winc
-- as: nutanix-ipi-ovn-winc-f7
-  cron: 1 15 9,16,23,30 * *
-  steps:
-    cluster_profile: nutanix
-    env:
-      EXTRACT_MANIFEST_INCLUDED: "true"
-      TEST_FILTERS: ~ChkUpgrade&;~ConnectedOnly&;Smokerun&
-      TEST_SCENARIOS: Windows_Containers
-      TEST_TIMEOUT: "50"
-      WINDOWS_OS_ID: windows-server-2025-qe
-    test:
-    - ref: openshift-extended-test
-    workflow: cucushift-installer-rehearse-nutanix-ipi-ovn-winc
 - as: gcp-ipi-to-multiarch-mini-perm-f14
   cron: 23 21 7,23 * *
   steps:
