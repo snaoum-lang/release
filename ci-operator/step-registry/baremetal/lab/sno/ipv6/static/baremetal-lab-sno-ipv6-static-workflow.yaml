@@ -7,9 +7,11 @@ workflow:
       - ref: upi-install-heterogeneous
       - ref: baremetal-lab-etcd-encryption
     post:
+      - ref: baremetal-lab-sno-bip-gather
       - chain: baremetal-lab-post
       - ref: send-results-to-reportportal
     env:
+      AGENT_PLATFORM_TYPE: none
       BOOTSTRAP_IN_PLACE: "true"
       ADDITIONAL_WORKERS: "0"
       ipv4_enabled: "false"
